@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Pharmacy Store</title>
+<meta name="description" content="Pharmacy store services including delivery, consultation, and medicine support">
+<link rel="stylesheet" href="../cssFile/globalStyles.css">
+</head>
+
+<body>
+<nav>
+  <a href="../index.html">My Pharmacy Store</a>
+
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="signup.html">Signup</a></li>
+    <li><a href="#" onclick="logout()">Logout</a></li>
+  </ul>
+
+  <div class="cart-box">
+    Cart (<span id="cart-count">0</span>)
+  </div>
+</nav>
+<div class="page">
+  <h1>Dashboard</h1>
+  <p>Manage products, orders, and pharmacy stock.</p>
+</div>
+<div class="dashboard-cards">
+
+  <div class="card">
+    <h3>Total Products</h3>
+    <p>3</p>
+  </div>
+
+  <div class="card">
+    <h3>Total Orders</h3>
+    <p>10</p>
+  </div>
+
+  <div class="card">
+    <h3>Revenue</h3>
+    <p>Rs. 5000</p>
+  </div>
+
+  <div class="card">
+    <h3>Low Stock</h3>
+    <p class="low-stock">2 Items</p>
+  </div>
+
+</div>
+<div class="table-container">
+<table>
+  <thead>
+    <tr>
+      <th>Medicine</th>
+      <th>Price</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Panadol</td>
+      <td>Rs.50</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Syrup</td>
+      <td>Rs.120</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Vitamins</td>
+      <td>Rs.200</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>BabyCare</td>
+      <td>Rs.250</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<script src="../js/functions.js"></script>
+<div id="toast" class="toast"></div>
+</body>
+</html>
