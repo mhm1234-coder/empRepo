@@ -9,11 +9,10 @@
 
 <body>
 
-  
+
 <header>
 <nav>
 <a href="#">My Pharmacy Store</a>
-
 
 <ul>
   <li><a href="index.html">Home</a></li>
@@ -21,7 +20,12 @@
   <li><a href="pages/contact.html">Contact</a></li>
   <li><a href="pages/signup.html">Signup</a></li>
 </ul>
-<input type="text" placeholder="Search medicines...">
+<input 
+  type="text" 
+  id="searchBox" 
+  placeholder="Search medicines..."
+  onkeyup="searchProducts()"
+/>
 <div class="cart-box">
   Cart (<span id="cart-count">0</span>)
 </div>
@@ -30,6 +34,7 @@
 <div class="page">
 
 <h2>Categories</h2>
+<button class="cat-box" onclick="filterCategory('all')">All</button>
 <button class="cat-box" onclick="filterCategory('tablets')">Tablets</button>
 <button class="cat-box" onclick="filterCategory('syrups')">Syrups</button>
 <button class="cat-box" onclick="filterCategory('vitamins')">Vitamins</button>
@@ -43,7 +48,7 @@
 <img src="sources/panadol.png" alt="Panadol Medicine">
 <h3>Panadol</h3>
 <p>Rs.50</p>
-<button onclick="addItem('Panadol', 50)">Add to Cart</button>
+<button onclick="addItem('Tablets', 50)">Add to Cart</button>
   
 </div>
 
@@ -68,6 +73,12 @@
 <button onclick="addItem('Baby Care', 500)">Add to Cart</button>
 </div>
 </div>
+<div class="cart-actions">
+  <button class="clear-cart-btn" onclick="clearCart()">
+    🗑 Clear Cart
+  </button>
+</div>
 <script src="js/functions.js"></script>
+<div id="toast" class="toast"></div>
 </body>
 </html>

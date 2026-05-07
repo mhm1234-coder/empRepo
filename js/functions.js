@@ -1,8 +1,10 @@
 console.log("Pharmacy project running");
+
+// ================= GLOBAL CART =================
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+updateCartCount();
 
-/* ================= CATEGORY FUNCTION ================= */
-
+// ================= CATEGORY FILTER =================
 function filterCategory(category) {
   let items = document.querySelectorAll(".product");
 
@@ -10,50 +12,45 @@ function filterCategory(category) {
     if (category === "all") {
       item.style.display = "block";
     } else {
-      if (item.classList.contains(category)) {
-        item.style.display = "block";
-      } else {
-        item.style.display = "none";
-      }
+      item.style.display = item.classList.contains(category)
+        ? "block"
+        : "none";
     }
   });
 }
-/* ================= CART FUNCTION ================= */
+function searchProducts() {
+  let input = document.getElementById("searchBox").value.toLowerCase();
 
-/**
- * Add item to shopping cart
- */
+  let items = document.querySelectorAll(".product");
+
+  items.forEach(item => {
+
+    let name = item.querySelector("h3").innerText.toLowerCase();
+
+    let category = item.className.toLowerCase();
+
+    if (
+      name.includes(input) ||
+      category.includes(input)
+    ) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+
+  });
+}
+// ================= ADD TO CART =================
 function addItem(name, price) {
-  let item = { name, price };
-
-  cart.push(item);
+  cart.push({ name, price });
 
   localStorage.setItem("cart", JSON.stringify(cart));
 
   updateCartCount();
-
-  showToast(name + " added to cart!");
+  showToast(`${name} added to cart`);
 }
 
-/**
- * Show all cart items
- */
-function showCart() {
-  if (cart.length === 0) {
-    showToast("Cart is empty!");
-    return;
-  }
-
-  let message = "Cart Items:\n";
-
-  cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} - Rs ${item.price}\n`;
-  });
-
-  message += "\nTotal: Rs " + getCartTotal();
-
-  showToast(message);
-}
+// ================= CART COUNT =================
 function updateCartCount() {
   let cartCount = document.getElementById("cart-count");
 
@@ -61,64 +58,109 @@ function updateCartCount() {
     cartCount.innerText = cart.length;
   }
 }
+
+// ================= CART TOTAL =================
 function getCartTotal() {
   return cart.reduce((sum, item) => sum + item.price, 0);
 }
-/* ================= LOGIN FUNCTION ================= */
-function loginUser(email, password) {
-  let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  let user = users.find(u => u.email === email && u.password === btoa(password));
-
-  if (!user) {
-    showToast("Invalid credentials!");
-    return false;
+// ================= SHOW CART =================
+function showCart() {
+  if (cart.length === 0) {
+    showToast("Cart is empty");
+    return;
   }
 
-  localStorage.setItem("isLoggedIn", true);
+  let msg = "Cart Items:\n";
 
-  showToast("Login successful!");
+  cart.forEach((item, i) => {
+    msg += `${i + 1}. ${item.name} - Rs ${item.price}\n`;
+  });
 
-  setTimeout(() => {
-    window.location.href = "../pages/dashboard.html";
-  }, 1000);
+  msg += "\nTotal: Rs " + getCartTotal();
 
-  return true;
+  showToast(msg);
 }
 
+// ================= CLEAR CART =================
+function clearCart() {
+  cart = [];
+  localStorage.removeItem("cart");
+  updateCartCount();
+  showToast("Cart cleared");
+}
 
+// ================= SIGNUP  =================
+function handleSignup(event) {
+  event.preventDefault();
 
-/* ================= SIGNUP FUNCTION ================= */
-function signupUser(name, email, password) {
+  let name = event.target.name.value;
+  let email = event.target.email.value;
+  let password = event.target.password.value;
+
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   let exists = users.find(u => u.email === email);
 
   if (exists) {
-    showToast("User already exists!");
+    showToast("User already exists");
     return false;
   }
 
   users.push({
     name,
     email,
-    password: btoa(password)
+    password: password // simple (no btoa for stability)
   });
 
   localStorage.setItem("users", JSON.stringify(users));
 
-  showToast("Signup successful!");
+  showToast("Signup successful");
 
   setTimeout(() => {
     window.location.href = "login.html";
   }, 1000);
 
-  return true;
+  return false;
 }
 
+// ================= LOGIN =================
+function handleLogin(event) {
+  event.preventDefault();
 
-/* ================= CONTACT FORM ================= */
-function handleContactForm(event){
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  let user = users.find(u => u.email === email && u.password === password);
+
+  if (!user) {
+    showToast("Invalid login");
+    return false;
+  }
+
+  localStorage.setItem("isLoggedIn", "true");
+
+  showToast("Login successful");
+
+  setTimeout(() => {
+    window.location.href = "../pages/dashboard.html";
+  }, 1000);
+
+  return false;
+}
+
+// ================= LOGOUT =================
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  showToast("Logged out");
+
+  window.location.href = "../index.html";
+}
+
+// ================= CONTACT FORM =================
+function handleContactForm(event) {
   event.preventDefault();
 
   let name = event.target.name.value;
@@ -126,32 +168,17 @@ function handleContactForm(event){
   let message = event.target.message.value;
 
   if (!name || !email || !message) {
-    showToast("Please fill all fields!");
+    showToast("Fill all fields");
     return false;
   }
 
-  showToast("Message sent successfully!");
+  showToast("Message sent");
   event.target.reset();
+
+  return false;
 }
 
-
-/* ================= LOGIN  ================= */
-function handleLogin(event){
-  event.preventDefault();
-
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
-
-  return loginUser(email, password);
-}
-/* ================= LOGOUT ================= */
-function logout() {
-  localStorage.removeItem("isLoggedIn");
-  showToast("Logged out successfully!");
-
-  window.location.href = "../index.html";
-}
-/* ================= TOAST FUNCTION ================= */
+// ================= TOAST =================
 function showToast(message) {
   let toast = document.getElementById("toast");
 
@@ -164,12 +191,17 @@ function showToast(message) {
     toast.style.display = "none";
   }, 2500);
 }
-  /* ================= FOOTER FUNCTION ================= */
+
+// ================= FOOTER AUTO =================
 if (!document.querySelector("footer")) {
-  document.body.insertAdjacentHTML("beforeend", `
-    <footer>
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    `<footer>
       <p>Contact: pharmacy@gmail.com</p>
       <p>Phone: 0300-1234567</p>
-    </footer>
-  `);
+    </footer>`
+  );
+}
+window.onload = function () {
+  updateCartCount();
 };
