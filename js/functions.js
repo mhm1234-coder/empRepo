@@ -1,50 +1,51 @@
 console.log("Pharmacy project running");
 
-// ================= GLOBAL CART =================
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-updateCartCount();
-
-// ================= CATEGORY FILTER =================
-function filterCategory(category) {
-  let items = document.querySelectorAll(".product");
-
-  items.forEach(item => {
-    if (category === "all") {
-      item.style.display = "block";
-    } else {
-      item.style.display = item.classList.contains(category)
-        ? "block"
-        : "none";
-    }
-  });
+// ================= CART STORAGE =================
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// global cart
+let cart = getCart();
+
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  renderCart();
+});
+
+// ================= SEARCH =================
 function searchProducts() {
-  let input = document.getElementById("searchBox").value.toLowerCase();
+  let input = document.getElementById("searchBox");
 
-  let items = document.querySelectorAll(".product");
+  if (!input) return;
+
+  let value = input.value.toLowerCase().trim();
+  let items = document.querySelectorAll(".product-card");
 
   items.forEach(item => {
-
-    let name = item.querySelector("h3").innerText.toLowerCase();
-
-    let category = item.className.toLowerCase();
-
-    if (
-      name.includes(input) ||
-      category.includes(input)
-    ) {
-      item.style.display = "block";
-    } else {
-      item.style.display = "none";
-    }
-
+    let text = item.textContent.toLowerCase();
+    item.style.display = text.includes(value) ? "inline-block" : "none";
   });
 }
+
 // ================= ADD TO CART =================
 function addItem(name, price) {
-  cart.push({ name, price });
+  let cart = getCart();
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  let existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty = (existing.qty || 1) + 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  saveCart(cart);
 
   updateCartCount();
   showToast(`${name} added to cart`);
@@ -53,65 +54,108 @@ function addItem(name, price) {
 // ================= CART COUNT =================
 function updateCartCount() {
   let cartCount = document.getElementById("cart-count");
+  if (!cartCount) return;
 
-  if (cartCount) {
-    cartCount.innerText = cart.length;
-  }
+  let cart = getCart();
+
+  let totalItems = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+
+  cartCount.innerText = totalItems;
 }
 
 // ================= CART TOTAL =================
 function getCartTotal() {
-  return cart.reduce((sum, item) => sum + item.price, 0);
+  let cart = getCart();
+
+  return cart.reduce((sum, item) => {
+    return sum + item.price * (item.qty || 1);
+  }, 0);
 }
+// ================= RENDER CART =================
+function renderCart() {
+  let table = document.querySelector(".cart-table");
 
-// ================= SHOW CART =================
-function showCart() {
-  if (cart.length === 0) {
-    showToast("Cart is empty");
-    return;
-  }
+  if (!table) return;
 
-  let msg = "Cart Items:\n";
+  let cart = getCart();
 
-  cart.forEach((item, i) => {
-    msg += `${i + 1}. ${item.name} - Rs ${item.price}\n`;
+  let html = `
+    <tr>
+      <th>Medicine</th>
+      <th>Price</th>
+      <th>Qty</th>
+      <th>Total</th>
+      <th>Action</th>
+    </tr>
+  `;
+
+  cart.forEach((item, index) => {
+    let qty = item.qty || 1;
+    let total = item.price * qty;
+
+    html += `
+      <tr>
+        <td>${item.name}</td>
+        <td>Rs ${item.price}</td>
+        <td>${qty}</td>
+        <td>Rs ${total}</td>
+        <td>
+          <button onclick="removeItem(${index})">Remove</button>
+        </td>
+      </tr>
+    `;
   });
 
-  msg += "\nTotal: Rs " + getCartTotal();
+  table.innerHTML = html;
 
-  showToast(msg);
+  let summary = document.querySelector(".cart-summary h3");
+
+  if (summary) {
+    summary.innerText = "Total: Rs " + getCartTotal();
+  }
 }
 
 // ================= CLEAR CART =================
 function clearCart() {
-  cart = [];
   localStorage.removeItem("cart");
+
   updateCartCount();
+  renderCart();
+
   showToast("Cart cleared");
 }
 
-// ================= SIGNUP  =================
+// ================= SIGNUP =================
 function handleSignup(event) {
   event.preventDefault();
 
-  let name = event.target.name.value;
-  let email = event.target.email.value;
-  let password = event.target.password.value;
+  let form = event.target;
+
+  let name = form.name.value.trim();
+  let email = form.email.value.trim();
+  let password = form.password.value.trim();
+
+  if (!name || !email || !password) {
+    return showToast("All fields are required");
+  }
+
+  if (!email.includes("@")) {
+    return showToast("Enter valid email");
+  }
+
+  if (password.length < 6) {
+    return showToast("Password must be at least 6 characters");
+  }
 
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   let exists = users.find(u => u.email === email);
 
   if (exists) {
-    showToast("User already exists");
-    return false;
+    return showToast("User already exists");
   }
 
-  users.push({
-    name,
-    email,
-    password: password // simple (no btoa for stability)
-  });
+  users.push({ name, email, password });
 
   localStorage.setItem("users", JSON.stringify(users));
 
@@ -120,24 +164,25 @@ function handleSignup(event) {
   setTimeout(() => {
     window.location.href = "login.html";
   }, 1000);
-
-  return false;
 }
 
 // ================= LOGIN =================
 function handleLogin(event) {
   event.preventDefault();
 
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
+  let email = document.getElementById("email")?.value.trim();
+  let password = document.getElementById("password")?.value.trim();
+
+  if (!email || !password) {
+    return showToast("Fill all fields");
+  }
 
   let users = JSON.parse(localStorage.getItem("users")) || [];
 
   let user = users.find(u => u.email === email && u.password === password);
 
   if (!user) {
-    showToast("Invalid login");
-    return false;
+    return showToast("Invalid email or password");
   }
 
   localStorage.setItem("isLoggedIn", "true");
@@ -147,35 +192,34 @@ function handleLogin(event) {
   setTimeout(() => {
     window.location.href = "../pages/dashboard.html";
   }, 1000);
-
-  return false;
 }
 
 // ================= LOGOUT =================
 function logout() {
   localStorage.removeItem("isLoggedIn");
+
   showToast("Logged out");
 
   window.location.href = "../index.html";
 }
 
-// ================= CONTACT FORM =================
+// ================= CONTACT =================
 function handleContactForm(event) {
   event.preventDefault();
 
-  let name = event.target.name.value;
-  let email = event.target.email.value;
-  let message = event.target.message.value;
+  let form = event.target;
+
+  let name = form.name.value.trim();
+  let email = form.email.value.trim();
+  let message = form.message.value.trim();
 
   if (!name || !email || !message) {
-    showToast("Fill all fields");
-    return false;
+    return showToast("Fill all fields");
   }
 
-  showToast("Message sent");
-  event.target.reset();
+  showToast("Message sent successfully");
 
-  return false;
+  form.reset();
 }
 
 // ================= TOAST =================
@@ -192,16 +236,8 @@ function showToast(message) {
   }, 2500);
 }
 
-// ================= FOOTER AUTO =================
-if (!document.querySelector("footer")) {
-  document.body.insertAdjacentHTML(
-    "beforeend",
-    `<footer>
-      <p>Contact: pharmacy@gmail.com</p>
-      <p>Phone: 0300-1234567</p>
-    </footer>`
-  );
-}
-window.onload = function () {
+// ================= INIT AGAIN =================
+window.addEventListener("load", () => {
   updateCartCount();
-};
+  renderCart();
+});

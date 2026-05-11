@@ -20,19 +20,31 @@
 </ul>
 </nav>
 
-<div class="form-container">
-  <form onsubmit="return handleLogin(event)">
+<div class="auth-container">
+  <div class="auth-box">
+
     <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  <p>
-  Don't have an account?
-  <a href="signup.html">Signup</a>
-</p>
+    <p>Welcome back to your Pharmacy Store</p>
+
+    <form onsubmit="return handleLogin(event)">
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="switch">
+      Don’t have an account?
+      <a href="signup.html">Create account</a>
+    </div>
+
+  </div>
 </div>
 <script src="../js/functions.js"></script>
 <div id="toast" class="toast"></div>
+<footer>
+  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
+  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
+</footer>
 </body>
 </html>

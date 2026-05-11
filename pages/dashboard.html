@@ -1,92 +1,137 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard - Pharmacy Store</title>
-<meta name="description" content="Pharmacy store services including delivery, consultation, and medicine support">
 <link rel="stylesheet" href="../cssFile/globalStyles.css">
 </head>
 
 <body>
-<nav>
-  <a href="../index.html">My Pharmacy Store</a>
 
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="signup.html">Signup</a></li>
-    <li><a href="#" onclick="logout()">Logout</a></li>
-  </ul>
+<header>
+  <nav>
+    <div>My Pharmacy Store</div>
 
-  <div class="cart-box">
-    Cart (<span id="cart-count">0</span>)
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Signup</a></li>
+    </ul>
+
+    <div>
+      Cart (<span id="cart-count">0</span>)
+    </div>
+  </nav>
+</header>
+<section class="hero">
+  <h1>Welcome to Pharmacy Dashboard</h1>
+  <p>Manage your inventory, orders, and customers efficiently</p>
+</section>
+<section class="dashboard">
+  <!-- TITLE BOX -->
+  <div class="box">
+    <h2>Pharmacy Dashboard</h2>
+    <p>Overview of system performance and inventory</p>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h3>Total Medicines</h3>
+        <p>248</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Orders Today</h3>
+        <p>53</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Total Customers</h3>
+        <p>1,204</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Monthly Revenue</h3>
+        <p>Rs 84,000</p>
+      </div>
+
+    </div>
   </div>
-</nav>
-<div class="page">
-  <h1>Dashboard</h1>
-  <p>Manage products, orders, and pharmacy stock.</p>
-</div>
-<div class="dashboard-cards">
 
-  <div class="card">
-    <h3>Total Products</h3>
-    <p>3</p>
+  <!-- LOW STOCK -->
+  <div class="box">
+    <h2>Low Stock Medicines</h2>
+
+    <table>
+      <tr>
+        <th>Medicine</th>
+        <th>Category</th>
+        <th>Stock</th>
+      </tr>
+
+      <tr>
+        <td>Panadol</td>
+        <td>Tablets</td>
+        <td class="low-stock">5 Left</td>
+      </tr>
+
+      <tr>
+        <td>Cough Syrup</td>
+        <td>Syrups</td>
+        <td class="low-stock">3 Left</td>
+      </tr>
+
+      <tr>
+        <td>Vitamin C</td>
+        <td>Vitamins</td>
+        <td class="low-stock">2 Left</td>
+      </tr>
+    </table>
   </div>
 
-  <div class="card">
-    <h3>Total Orders</h3>
-    <p>10</p>
+  <!-- RECENT ORDERS -->
+  <div class="box">
+    <h2>Recent Orders</h2>
+
+    <table>
+      <tr>
+        <th>Customer</th>
+        <th>Medicine</th>
+        <th>Status</th>
+      </tr>
+
+      <tr>
+        <td>Ali</td>
+        <td>Panadol</td>
+        <td>Delivered</td>
+      </tr>
+
+      <tr>
+        <td>Sara</td>
+        <td>Vitamin C</td>
+        <td>Pending</td>
+      </tr>
+
+      <tr>
+        <td>Ahmed</td>
+        <td>Syrup</td>
+        <td>Shipped</td>
+      </tr>
+    </table>
   </div>
 
-  <div class="card">
-    <h3>Revenue</h3>
-    <p>Rs. 5000</p>
-  </div>
+</section>
 
-  <div class="card">
-    <h3>Low Stock</h3>
-    <p class="low-stock">2 Items</p>
-  </div>
-
-</div>
-<div class="table-container">
-<table>
-  <thead>
-    <tr>
-      <th>Medicine</th>
-      <th>Price</th>
-      <th>Stock</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>Panadol</td>
-      <td>Rs.50</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <td>Syrup</td>
-      <td>Rs.120</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>Vitamins</td>
-      <td>Rs.200</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>BabyCare</td>
-      <td>Rs.250</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<footer>
+  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
+  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
+</footer>
 
 <script src="../js/functions.js"></script>
-<div id="toast" class="toast"></div>
+<div id="toast"></div>
 </body>
 </html>

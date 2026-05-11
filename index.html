@@ -3,83 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Pharmacy Store</title>
+<title>Pharmacy Store</title>
 <link rel="stylesheet" href="cssFile/globalStyles.css">
 </head>
 
 <body>
 
-
-<header>
 <nav>
-<a href="#">My Pharmacy Store</a>
+  <a href="index.html">My Pharmacy Store</a>
 
-<ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="pages/dashboard.html">Dashboard</a></li>
-  <li><a href="pages/services.html">Services</a></li>
-  <li><a href="pages/contact.html">Contact</a></li>
-  <li><a href="pages/signup.html">Signup</a></li>
-</ul>
-<input 
-  type="text" 
-  id="searchBox" 
-  placeholder="Search medicines..."
-  onkeyup="searchProducts()"
-/>
-<div class="cart-box">
-  Cart (<span id="cart-count">0</span>)
-</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="pages/dashboard.html">Dashboard</a></li>
+    <li><a href="pages/contact.html">Contact</a></li>
+    <li><a href="pages/services.html">Services</a></li>
+    <li><a href="pages/signup.html">Signup</a></li>
+  </ul>
+<input type="text" id="searchBox" placeholder="Search medicines..." onkeyup="searchProducts()">
+
+  <div>
+    Cart (<span id="cart-count">0</span>)
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
 </nav>
-</header> 
-<div class="page">
 
-<h2>Categories</h2>
-<button class="cat-box" onclick="filterCategory('all')">All</button>
-<button class="cat-box" onclick="filterCategory('tablets')">Tablets</button>
-<button class="cat-box" onclick="filterCategory('syrups')">Syrups</button>
-<button class="cat-box" onclick="filterCategory('vitamins')">Vitamins</button>
-<button class="cat-box" onclick="filterCategory('baby-care')">Baby Care</button>
-</div>
-<h2>Our Products</h2>
+<!-- HERO (CLASS 1) -->
+<section class="hero">
+  <h1>Your Trusted Pharmacy</h1>
+  <p>Order medicines online with fast delivery, safe products and 24/7 support.</p>
+</section>
 
-<div class="card-container">
+<!-- PRODUCTS -->
+<section>
+  <h2>Categories</h2>
 
-<div class="card product tablets">
-<img src="sources/panadol.png" alt="Panadol Medicine">
-<h3>Panadol</h3>
-<p>Rs.50</p>
-<button onclick="addItem('Tablets', 50)">Add to Cart</button>
-  
-</div>
+  <div class="product-card">
+    <h3>Tablets</h3>
+    <img src="sources/panadol.png" alt="Panadol">
+    <p>All medicines available</p>
+    <button onclick="addItem('Panadol', 200)">Add to cart</button>
+  </div>
 
-<div class="card product syrups">
-<img src="sources/syrup.png" alt="Cough Syrup Medicine">
-<h3>Syrup</h3>
-<p>Rs.120</p>
-<button onclick="addItem('Syrup', 120)">Add to Cart</button>
-</div>
+  <div class="product-card">
+    <h3>Syrups</h3>
+    <img src="sources/syrup.png" alt="Syrups">
+    <p>Child & adult care syrups</p>
+    <button onclick="addItem('Syrup', 300)">Add to cart</button>
+  </div>
 
-<div class="card product vitamins ">
-<img src="sources/vitamins.png" alt="Vitamins Medicine">
-<h3>Vitamins</h3>
-<p>Rs.200</p>
-<button onclick="addItem('Vitamins', 200)">Add to Cart</button>
-</div>
+  <div class="product-card">
+    <h3>Vitamins</h3>
+    <img src="sources/vitamins.png" alt="Vitamins">
+    <p>Health supplements</p>
+    <button onclick="addItem('Vitamins', 500)">Add to cart</button>
+  </div>
 
-<div class="card product baby-care">
-<img src="sources/babycare.png" alt="Baby Care Products">
-<h3>Baby Care</h3>
-<p>Rs.500</p>
-<button onclick="addItem('Baby Care', 500)">Add to Cart</button>
-</div>
-</div>
-<div class="cart-actions">
-  <button class="clear-cart-btn" onclick="clearCart()">
-    Clear Cart
-  </button>
-</div>
+  <div class="product-card">
+    <h3>Baby Care</h3>
+    <img src="sources/babycare.png" alt="Baby Care">
+    <p>Safe baby products</p>
+    <button onclick="addItem('BabyCare', 150)">Add to cart</button>
+  </div>
+</section>
 <script src="js/functions.js"></script>
 <div id="toast" class="toast"></div>
+<footer>
+  <p>© 2026 My Pharmacy Store</p>
+  <p><strong>Contact:</strong> 0123456789 | <strong>Email:</strong> pharmacy@gmail.com</p>
+</footer>
+
 </body>
 </html>

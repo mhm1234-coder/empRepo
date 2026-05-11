@@ -8,45 +8,80 @@
 </head>
 
 <body>
-<nav>
-  <a href="../index.html">My Pharmacy Store</a>
 
-  <ul>
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="signup.html">Signup</a></li>
-  </ul>
+<header>
+  <nav>
+    <div>My Pharmacy Store</div>
 
-  <div class="cart-box">
-    Cart (<span id="cart-count">0</span>)
-  </div>
-</nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="signup.html">Signup</a></li>
+    </ul>
 
-<div class="page">
+    <div>
+      Cart (<span id="cart-count">0</span>)
+    </div>
+  </nav>
+</header>
+
+<!-- ONLY CONTAINER CLASS -->
+<section class="hero">
   <h1>Contact Us</h1>
-
-  <div class="contact-info">
-    <p><b>Email:</b> pharmacy@gmail.com</p>
-    <p><b>Phone:</b> 0300-1234567</p>
-    <p><b>Address:</b> 123 Pharmacy Street, City</p>
-    <p><b>Working Hours:</b> 9:00 AM - 9:00 PM</p>
+  <p>We are here to help you with medicines and support.</p>
+  <h2>Get In Touch</h2>
+  </section>
+<div class="container"></div>
+  <div class="card">
+    <h3>Email</h3>
+    <p>pharmacy@gmail.com</p>
   </div>
 
-  <div class="form-container">
-  <form onsubmit="return handleContactForm(event)">
-    <h2>Send us a message</h2>
+  <div class="card">
+    <h3>Phone</h3>
+    <p>0123456789</p>
+  </div>
 
-    <input type="text" name="name" placeholder="Name" required>
+  <div class="card">
+    <h3>Address</h3>
+    <p>123 Pharmacy Street, City</p>
+  </div>
 
-    <input type="email" name="email" placeholder="Email" required>
+  <div class="card">
+    <h3>Working Hours</h3>
+    <p>9:00 AM - 9:00 PM</p>
+  </div>
 
-    <textarea name="message" placeholder="Message" required></textarea>
+  <h2>Send Message</h2>
 
-    <button type="submit">Send Message</button>
-  </form>
+  <div class="card">
+    <form onsubmit="return handleContactForm(event)">
+
+      <input type="text" name="name" placeholder="Enter your name" required>
+      <br><br>
+
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <br><br>
+
+      <textarea name="message" placeholder="Write your message here..." required></textarea>
+      <br><br>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+  </div>
+
 </div>
+
+<footer>
+  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
+  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
+</footer>
+
 <script src="../js/functions.js"></script>
-<div id="toast" class="toast"></div>
+<div id="toast"></div>
+
 </body>
 </html>
