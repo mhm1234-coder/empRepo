@@ -1,59 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services - Pharmacy Store</title>
-<link rel="stylesheet" href="../cssFile/globalStyles.css">
+  <title>Services - Pharmacy Store</title>
+  <link rel="stylesheet" href="../cssfile/globalStyles.css">
 </head>
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
 <nav>
-  <a href="../index.html">My Pharmacy Store</a>
+
+  <a href="../index.html">Pharmacy Store</a>
 
   <ul>
     <li><a href="../index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="products.html">Products</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="signup.html">Signup</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="cart.html">Cart</a></li>
   </ul>
 
-  <div>
-    Cart (<span id="cart-count">0</span>)
-  </div>
 </nav>
 
-<!-- ONLY CONTAINER CLASS -->
-<div class="container">
-  <h1>Our Services</h1>
-  <p>We provide best healthcare services for your needs.</p>
+<!-- ================= PAGE ================= -->
+<div class="page">
 
+  <!-- ================= HERO SECTION ================= -->
+  <section class="page-header">
 
+    <h1>Healthcare Services You Can Trust</h1>
 
-  <div class="card">
-    <h3>Fast Delivery</h3>
-    <p>We deliver medicines within 24 hours.</p>
-    <p>Free delivery on orders above Rs 500.</p>
-  </div>
+    <p>
+      Pharmacy Store provides professional healthcare services designed to support your wellness anytime, anywhere.
+    </p>
+    <section class="page-header-image">
+      <img src="../sources/servicesimg.png" alt="Pharmacy Services">
+    </section>
+  </section>
 
-  <div class="card">
-    <h3>24/7 Support</h3>
-    <p>Our team is always available to help you.</p>
-    <p>Contact us anytime for assistance.</p>
-  </div>
+  <!-- ================= SERVICES GRID ================= -->
+  <section class="card-container">
 
-  <div class="card">
-    <h3>Quality Assurance</h3>
-    <p>We ensure 100% authentic medicines.</p>
-    <p>Partnered with trusted suppliers.</p>
-  </div>
+    <div class="card">
+      <h3> 24/7 Pharmacy Support</h3>
+      <p>Our pharmacy is always open to provide you medicines and assistance anytime.</p>
+   <a href="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Fast Home Delivery</h3>
+      <p>Get your medicines delivered safely and quickly at your doorstep.</p>
+      <a href="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Online Doctor Consultation</h3>
+      <p>Connect with certified doctors for online medical advice.</p>
+      <a href="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Prescription Management</h3>
+      <p>Upload and manage your prescriptions securely in one place.</p>
+<a hredf="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Lab Test Booking</h3>
+      <p>Book lab tests and get reports online without visiting hospital.</p>
+      <a href="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Lab Test Booking</h3>
+      <p>Book lab tests and get reports online without visiting hospital.</p>
+      <a href="contact.html" class="link-button">Contact Us</a>
+    </div>
+
+    <div class="card">
+      <h3> Health Support</h3>
+      <p>Get guidance for chronic diseases and daily health monitoring.</p>
+      <a href="contact.html" class="link-button">Contact Support</a>
+    </div>
+
+  </section>
+
+  <!-- ================= CTA SECTION ================= -->
+  <section class="cta-section">
+
+    <h2>Need Immediate Help?</h2>
+
+    <p>Our healthcare team is available 24/7 for assistance.</p>
+
+    <a href="contact.html" class="link-button">
+      Contact Us
+    </a>
+
+  </section>
+
 </div>
 
-<script src="../js/functions.js"></script>
+<!-- ================= FOOTER ================= -->
 <footer>
-  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
-  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
+
+  <section class="footer-container">
+
+    <div>
+      <h3>Pharmacy Store  </h3>
+      <p>Trusted healthcare & pharmacy platform.</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="../index.html">Home</a></p>
+      <p><a href="products.html">Products</a></p>
+      <p><a href="cart.html">Cart</a></p>
+    </div>
+
+    <div>
+      <h3>Support</h3>
+      <p>24/7 Medical Assistance</p>
+    </div>
+
+  </section>
+
 </footer>
+
+<script src="../js/functions.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cart - Pharmacy Store</title>
+  <link rel="stylesheet" href="../cssfile/globalStyles.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+
+  <a href="../index.html">Pharmacy Store</a>
+
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+    <li><a href="cart.html">Cart</a></li>
+  </ul>
+
+</nav>
+
+<!-- ================= PAGE ================= -->
+<div class="page">
+
+  <!-- ================= HEADER ================= -->
+  <section class="page-header">
+
+    <h2>Your Shopping Cart</h2>
+
+    <p>Review your medicines before checkout</p>
+
+  </section>
+
+  <!-- ================= CART TABLE ================= -->
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="cartTable">
+        <!-- JS will inject data -->
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- ================= CHECKOUT SECTION ================= -->
+  <section class="cart-summary">
+
+    <h3>Total Bill: Rs <span id="totalBill">0</span></h3>
+
+    <button onclick="checkout()" class="checkout-btn">
+      Proceed to Checkout
+    </button>
+
+  </section>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+
+  <section class="footer-container">
+
+    <div>
+      <h3>Pharmacy Store</h3>
+      <p>Safe & trusted pharmacy delivery</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="../index.html">Home</a></p>
+      <p><a href="products.html">Products</a></p>
+    </div>
+
+  </section>
+
+</footer>
+
+<script src="../js/functions.js"></script>
+</body>
+
+</html>

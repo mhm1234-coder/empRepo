@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Products - Pharmacy Store</title>
+  <link rel="stylesheet" href="../cssfile/globalStyles.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+
+  <a href="../index.html">Pharmacy Store</a>
+
+  <!-- SEARCH BAR -->
+  <div class="select-container">
+    <input type="text" placeholder="Search medicines..." />
+  </div>
+
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="services.html">Services</a></li>>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="cart.html">Cart</a></li>
+  </ul>
+
+</nav>
+
+<!-- ================= PAGE ================= -->
+<div class="page">
+
+  <h2>Pharmacy Products</h2>
+
+  <p>Browse and order trusted medicines online.</p>
+
+  <!-- ================= CATEGORY FILTER ================= -->
+  <div class="card-container">
+
+    <div class="card">
+      <h3>All</h3>
+    </div>
+
+    <div class="card">
+      <h3>Pain Relief</h3>
+    </div>
+
+    <div class="card">
+      <h3>Vitamins</h3>
+    </div>
+
+    <div class="card">
+      <h3>Cough & Cold</h3>
+    </div>
+
+    <div class="card">
+      <h3>Baby Care Products</h3>
+    </div>
+  </div>
+
+  <!-- ================= PRODUCTS GRID ================= -->
+  <div class="card-container">
+
+    <div class="card">
+
+      <img src="../sources/panadol.png">
+
+      <h3>Panadol</h3>
+
+      <p>Fast pain relief tablet</p>
+
+      <p><b>Rs. 120</b></p>
+
+
+      <button onclick="addToCart('Panadol', 120)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <img src="../sources/vitamins.png">
+
+      <h3>Vitamin C</h3>
+
+      <p>Immunity booster capsules</p>
+
+      <p><b>Rs. 300</b></p>
+
+      <button onclick="addToCart('Vitamin C', 300)">
+        Add to Cart
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <img src="../sources/syrup.png">
+
+      <h3>Cough Syrup</h3>
+
+      <p>Relieves cough and cold symptoms</p>
+
+      <p><b>Rs. 450</b></p>
+
+      <button onclick="addToCart('Cough Syrup', 450)">
+        Add to Cart
+      </button>
+
+    </div>
+    <div class="card">
+      <img src="../sources/babycare.png">
+
+      <h3>Baby Care Kit</h3>
+
+      <p>Complete care for your baby</p>
+
+      <p><b>Rs. 1500</b></p>
+
+      <button onclick="addToCart('Baby Care Kit', 1500)">
+        Add to Cart
+      </button>
+
+  </div>
+
+  </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+
+  <section class="footer-container">
+
+    <div>
+      <h3>Pharmacy Store  </h3>
+      <p>Trusted online pharmacy store.</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="../index.html">Home</a></p>
+      <p><a href="products.html">Products</a></p>
+      <p><a href="cart.html">Cart</a></p>
+    </div>
+
+    <div>
+      <h3>Support</h3>
+      <p>24/7 Healthcare Support</p>
+    </div>
+
+  </section>
+
+</footer>
+
+<script src="../js/functions.js"></script>
+</body>
+
+</html>

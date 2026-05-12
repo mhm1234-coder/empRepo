@@ -1,76 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pharmacy Store</title>
-<link rel="stylesheet" href="cssFile/globalStyles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pharmacy Store - Online Pharmacy</title>
+
+  <link rel="stylesheet" href="cssfile/globalStyles.css">
 </head>
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
 <nav>
-  <a href="index.html">My Pharmacy Store</a>
+
+  <a href="index.html">
+    <h2>Pharmacy Store</h2>
+  </a>
+
+  <!-- SEARCH -->
+  <div class="select-container">
+    <input type="text"
+      placeholder="Search medicines..."
+      onkeyup="searchProducts(this.value)" />
+  </div>
 
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="pages/dashboard.html">Dashboard</a></li>
-    <li><a href="pages/contact.html">Contact</a></li>
+    <li>
+      <a href="pages/cart.html">
+        Cart (<span id="cartCount">0</span>)
+      </a>
+    </li>
+    <li><a href="pages/products.html">Products</a></li>
     <li><a href="pages/services.html">Services</a></li>
-    <li><a href="pages/signup.html">Signup</a></li>
+    <li><a href="pages/contact.html">Contact</a></li>
   </ul>
-<input type="text" id="searchBox" placeholder="Search medicines..." onkeyup="searchProducts()">
 
-  <div>
-    Cart (<span id="cart-count">0</span>)
-    <button onclick="clearCart()">Clear Cart</button>
-  </div>
 </nav>
 
-<!-- HERO (CLASS 1) -->
-<section class="hero">
-  <h1>Your Trusted Pharmacy</h1>
-  <p>Order medicines online with fast delivery, safe products and 24/7 support.</p>
+<!-- ================= PAGE ================= -->
+<section class="page">
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <h1>Your Trusted Online Pharmacy</h1>
+
+      <p>
+        Order medicines, healthcare products and wellness items safely from home.
+      </p>
+
+      <a href="pages/products.html" class="link-button">
+        Shop Now
+      </a>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="sources/pharmacytrusts.png" alt="Pharmacy Hero">
+    </div>
+
+  </section>
+
+  <!-- CATEGORIES -->
+  <h2>Shop by Categories</h2>
+
+  <section class="card-container">
+
+    <div class="card"><h3>Pain Relief</h3></div>
+    <div class="card"><h3>Vitamins</h3></div>
+    <div class="card"><h3>Baby Care</h3></div>
+    <div class="card"><h3>Cold & Flu</h3></div>
+
+  </section>
+
+  <!-- PRODUCTS -->
+  <h2>Featured Products</h2>
+
+  <section class="card-container">
+
+    <div class="card">
+      <img src="sources/panadol.png">
+      <h3>Panadol</h3>
+      <p>Rs 120</p>
+      <button onclick="addToCart('Panadol', 120)">Add To Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="sources/vitamins.png">
+      <h3>Vitamin Capsules</h3>
+      <p>Rs 300</p>
+      <button onclick="addToCart('Vitamin Capsules', 300)">Add To Cart</button>
+    </div>
+
+    <div class="card">
+      <img src="sources/syrup.png">
+      <h3>Cold Syrup</h3>
+      <p>Rs 150</p>
+      <button onclick="addToCart('Cold Syrup', 150)">Add To Cart</button>
+    </div>
+    <div class="card">
+      <img src="sources/babycare.png">
+      <h3>Baby Care Set</h3>
+      <p>Rs 500</p>
+      <button onclick="addToCart('Baby Care Set', 500)">Add To Cart</button>
+    </div>
+
+  </section>
+
 </section>
 
-<!-- PRODUCTS -->
-<section>
-  <h2>Categories</h2>
-
-  <div class="product-card">
-    <h3>Tablets</h3>
-    <img src="sources/panadol.png" alt="Panadol">
-    <p>All medicines available</p>
-    <button onclick="addItem('Panadol', 200)">Add to cart</button>
-  </div>
-
-  <div class="product-card">
-    <h3>Syrups</h3>
-    <img src="sources/syrup.png" alt="Syrups">
-    <p>Child & adult care syrups</p>
-    <button onclick="addItem('Syrup', 300)">Add to cart</button>
-  </div>
-
-  <div class="product-card">
-    <h3>Vitamins</h3>
-    <img src="sources/vitamins.png" alt="Vitamins">
-    <p>Health supplements</p>
-    <button onclick="addItem('Vitamins', 500)">Add to cart</button>
-  </div>
-
-  <div class="product-card">
-    <h3>Baby Care</h3>
-    <img src="sources/babycare.png" alt="Baby Care">
-    <p>Safe baby products</p>
-    <button onclick="addItem('BabyCare', 150)">Add to cart</button>
-  </div>
-</section>
-<script src="js/functions.js"></script>
-<div id="toast" class="toast"></div>
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 My Pharmacy Store</p>
-  <p><strong>Contact:</strong> 0123456789 | <strong>Email:</strong> pharmacy@gmail.com</p>
+  <section class="footer-container">
+
+    <div>
+      <h3>Pharmacy Store</h3>
+      <p>Trusted healthcare platform</p>
+    </div>
+
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="index.html">Home</a></p>
+      <p><a href="pages/products.html">Products</a></p>
+      <p><a href="pages/services.html">Services</a></p>
+    </div>
+
+  </section>
 </footer>
+
+<script src="js/functions.js"></script>
 
 </body>
 </html>

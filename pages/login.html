@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Login - Pharmacy Store</title>
-
-  <link rel="stylesheet" href="../cssFile/globalStyles.css">
+  <link rel="stylesheet" href="../cssfile/globalStyles.css">
 </head>
+
 <body>
 
 <nav>
-<a href="../index.html">My Pharmacy Store</a>
-<ul>
-  <li><a href="../index.html">Home</a></li>
-  <li><a href="services.html">Services</a></li>
-  <li><a href="contact.html">Contact</a></li>
-  <li><a href="signup.html">Signup</a></li>
-</ul>
+  <a href="../index.html"> Pharmacy Store</a>
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="signup.html">Signup</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="cart.html">Cart</a></li>
+  </ul>
 </nav>
 
-<div class="auth-container">
-  <div class="auth-box">
+<div class="page">
 
-    <h2>Login</h2>
-    <p>Welcome back to your Pharmacy Store</p>
+  <h2>Login</h2>
 
-    <form onsubmit="return handleLogin(event)">
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="password" id="password" placeholder="Password" required>
+  <div class="form-container">
+
+    <form onsubmit="return loginUser(event)">
+
+      <div>
+        <label>Email</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+
+      <div>
+        <label>Password</label>
+        <input type="password" id="loginPassword" required>
+      </div>
 
       <button type="submit">Login</button>
+
     </form>
 
-    <div class="switch">
-      Don’t have an account?
-      <a href="signup.html">Create account</a>
-    </div>
-
   </div>
+
 </div>
+
 <script src="../js/functions.js"></script>
-<div id="toast" class="toast"></div>
-<footer>
-  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
-  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
-</footer>
 </body>
 </html>

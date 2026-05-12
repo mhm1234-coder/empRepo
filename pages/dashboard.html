@@ -1,137 +1,164 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - Pharmacy Store</title>
-<link rel="stylesheet" href="../cssFile/globalStyles.css">
+  <title>Dashboard - PharmaCare</title>
+  <link rel="stylesheet" href="../cssfile/globalStyles.css">
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <div>My Pharmacy Store</div>
+<!-- ================= NAVBAR ================= -->
+<nav>
 
-    <ul>
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="dashboard.html">Dashboard</a></li>
+  <a href="../index.html">PharmaCare</a>
+
+  <ul>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="login.html">Login</a></li>
-      <li><a href="signup.html">Signup</a></li>
-    </ul>
+    <li><a href="cart.html">Cart</a></li>
+  </ul>
+
+</nav>
+
+<!-- ================= PAGE ================= -->
+<div class="page">
+
+  <!-- ================= HEADER ================= -->
+  <section class="page-header">
+
+    <h2> User Dashboard</h2>
+
+    <p>Welcome back! Here is your pharmacy activity overview.</p>
+
+  </section>
+
+  <!-- ================= STATS CARDS ================= -->
+  <section class="card-container">
+
+    <div class="card">
+      <h3>Total Orders</h3>
+      <h2>12</h2>
+      <p>All time purchases</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Spent</h3>
+      <h2>Rs 3,450</h2>
+      <p>Your total spending</p>
+    </div>
+
+    <div class="card">
+      <h3>Active Orders</h3>
+      <h2>2</h2>
+      <p>Currently processing</p>
+    </div>
+
+  </section>
+
+  <!-- ================= ORDER HISTORY ================= -->
+  <h3> Recent Orders</h3>
+
+  <div class="table-container">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Medicine</th>
+          <th>Status</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>#101</td>
+          <td>Panadol</td>
+          <td><span class="status-delivered">Delivered</span></td>
+          <td>Rs 120</td>
+        </tr>
+
+        <tr>
+          <td>#102</td>
+          <td>Vitamin C</td>
+          <td><span class="status-processing">Processing</span></td>
+          <td>Rs 300</td>
+        </tr>
+
+        <tr>
+          <td>#103</td>
+          <td>Amoxicillin</td>
+          <td><span class="status-cancelled">Cancelled</span></td>
+          <td>Rs 450</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <!-- ================= QUICK ACTIONS ================= -->
+  <h3> Quick Actions</h3>
+
+  <section class="card-container">
+
+    <div class="card">
+      <h3>Order Medicines</h3>
+      <p>Browse and buy products</p>
+      <a href="products.html" class="link-button">Shop Now</a>
+    </div>
+
+    <div class="card">
+      <h3>View Cart</h3>
+      <p>Check selected items</p>
+      <a href="cart.html" class="link-button">Go to Cart</a>
+    </div>
+
+    <div class="card">
+      <h3>Support</h3>
+      <p>Contact pharmacy team</p>
+      <a href="contact.html" class="link-button">Contact</a>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+
+  <section class="footer-container">
 
     <div>
-      Cart (<span id="cart-count">0</span>)
+      <h3>Pharmacy Store</h3>
+      <p>Your trusted online pharmacy platform.</p>
     </div>
-  </nav>
-</header>
-<section class="hero">
-  <h1>Welcome to Pharmacy Dashboard</h1>
-  <p>Manage your inventory, orders, and customers efficiently</p>
-</section>
-<section class="dashboard">
-  <!-- TITLE BOX -->
-  <div class="box">
-    <h2>Pharmacy Dashboard</h2>
-    <p>Overview of system performance and inventory</p>
 
-    <div class="stats-grid">
-
-      <div class="stat-card">
-        <h3>Total Medicines</h3>
-        <p>248</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Orders Today</h3>
-        <p>53</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Total Customers</h3>
-        <p>1,204</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Monthly Revenue</h3>
-        <p>Rs 84,000</p>
-      </div>
-
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="../index.html">Home</a></p>
+      <p><a href="products.html">Products</a></p>
+      <p><a href="cart.html">Cart</a></p>
     </div>
-  </div>
 
-  <!-- LOW STOCK -->
-  <div class="box">
-    <h2>Low Stock Medicines</h2>
+    <div>
+      <h3>Support</h3>
+      <p>24/7 Customer Care</p>
+    </div>
 
-    <table>
-      <tr>
-        <th>Medicine</th>
-        <th>Category</th>
-        <th>Stock</th>
-      </tr>
+  </section>
 
-      <tr>
-        <td>Panadol</td>
-        <td>Tablets</td>
-        <td class="low-stock">5 Left</td>
-      </tr>
-
-      <tr>
-        <td>Cough Syrup</td>
-        <td>Syrups</td>
-        <td class="low-stock">3 Left</td>
-      </tr>
-
-      <tr>
-        <td>Vitamin C</td>
-        <td>Vitamins</td>
-        <td class="low-stock">2 Left</td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- RECENT ORDERS -->
-  <div class="box">
-    <h2>Recent Orders</h2>
-
-    <table>
-      <tr>
-        <th>Customer</th>
-        <th>Medicine</th>
-        <th>Status</th>
-      </tr>
-
-      <tr>
-        <td>Ali</td>
-        <td>Panadol</td>
-        <td>Delivered</td>
-      </tr>
-
-      <tr>
-        <td>Sara</td>
-        <td>Vitamin C</td>
-        <td>Pending</td>
-      </tr>
-
-      <tr>
-        <td>Ahmed</td>
-        <td>Syrup</td>
-        <td>Shipped</td>
-      </tr>
-    </table>
-  </div>
-
-</section>
-
-<footer>
-  <p>© 2026 My Pharmacy Store. All rights reserved.</p>
-  <p>Contact: 0123456789 | Email: pharmacy@gmail.com</p>
 </footer>
 
 <script src="../js/functions.js"></script>
-<div id="toast"></div>
 </body>
+
 </html>
